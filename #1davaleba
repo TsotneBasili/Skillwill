@@ -3,7 +3,7 @@ for string in range(5):
     text = input("enter text: ")
     if longest_string < len(text):
         longest_string = len(text)
-print(longest_string)
+print("the longest strings lenght is", longest_string)
 
 
 
