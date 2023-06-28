@@ -1,8 +1,9 @@
 longest_string = 0
 for string in range(5):
-    x = input("enter text: ")
-    if longest_string < len(x):
-        longest_string = len(x)
+    text = input("enter text: ")
+    if longest_string < len(text):
+        longest_string = len(text)
+print(longest_string)
 
 
 
@@ -16,7 +17,7 @@ def max_number(list):
 
 
 def factorial(n):
-    factorial = 1
+    result = 1
     for number in range(1, n+1):
-        factorial = factorial * number
-    return factorial
+        result = result * number
+    return result
