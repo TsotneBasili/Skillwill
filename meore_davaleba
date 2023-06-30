@@ -1,0 +1,23 @@
+# meore davaleba
+
+# to find minimum value in dictionary
+def minimum_value(dictionary):
+    dict_list = list(dictionary.values())
+    list_numbers = [numbers for numbers in dict_list if type(numbers) is int]
+    minimum = list_numbers[0]
+    for number in list_numbers:
+        if minimum > number:
+            minimum = number
+    return minimum
+
+
+# factorial code
+def factorial(n):
+    fact = 1
+
+    if n > 1:
+        fact = factorial(n-1)
+
+    fact = n * fact
+    return fact
+
