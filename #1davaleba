@@ -1,3 +1,4 @@
+# Returning longest string from 5 input
 longest_string = 0
 for string in range(5):
     text = input("enter text: ")
@@ -7,7 +8,7 @@ print("the longest strings lenght is", longest_string)
 
 
 
-
+# Returning maximum number from given list
 def max_number(list):
     max = list[0]
     for number in list:
@@ -15,7 +16,7 @@ def max_number(list):
             max = number
     return max
 
-
+#returning Factorial of given number
 def factorial(n):
     fac = 1
 
