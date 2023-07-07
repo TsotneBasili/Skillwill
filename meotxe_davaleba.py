@@ -19,11 +19,3 @@ class Student:
     def increase_grade(self, add_grade):
         self.grade += add_grade
         return self.grade
-
-
-# bondo = Student("Bondo",99, 23)
-#
-# bondo.increase_grade(1)
-# print(bondo.is_passing)
-# print(bondo.grade)
-# print(str(bondo))
