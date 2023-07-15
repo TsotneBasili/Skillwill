@@ -1,4 +1,4 @@
-#creating student class using inheritance, mixin and inheritance
+#creating student class using super(), mixin and inheritance
 
 class Person:
     def __init__(self, name, surname, age):
