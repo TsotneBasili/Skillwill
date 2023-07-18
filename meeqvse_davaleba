@@ -1,0 +1,48 @@
+#creating variouse classes and contacting them using composition. 
+
+class Heart:
+    def __init__(self, usage):
+        self.usage = usage
+
+    @property
+    def state(self):
+        if self.usage > 0.7:
+            return "high blood pressure"
+        else:
+            return "feeling good"
+
+
+class Brain:
+    def __init__(self, usage):
+        self.usage = usage
+
+    @property
+    def state(self):
+        if self.usage > 0.9:
+            return "tired"
+        else:
+            return "rested"
+
+
+class Person:
+    def __init__(self):
+        self.heart = Heart(0.5)
+        self.brain = Brain(0.5)
+
+
+class Leg:
+    def __init__(self, moving_speed):
+        self.moving_spead = moving_speed
+
+    @property
+    def action(self):
+        if self.moving_spead > 10:
+            return "running"
+        elif self.moving_spead > 0 <= 10:
+            return "walking"
+        else:
+            return "standing"
+
+
+leg1 = Leg(10)
+leg1.person1 = Person()
