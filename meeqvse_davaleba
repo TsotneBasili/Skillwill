@@ -44,5 +44,5 @@ class Leg:
             return "standing"
 
 
-leg1 = Leg(10)
-leg1.person1 = Person()
+person1 = Person()
+person1.leg = Leg(10)
