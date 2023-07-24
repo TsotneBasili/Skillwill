@@ -1,0 +1,66 @@
+# Creating student management system
+
+from abc import ABC, abstractmethod
+
+
+class Person(ABC):
+    @abstractmethod
+    def display_details(self):
+        pass
+
+
+class Student(Person):
+    def __init__(self, student_id, name, **grades):
+        self.__student_id = student_id
+        self.__name = name
+        self.__grades = grades
+
+    @property
+    def grade(self):
+        return self.__grades
+
+    @grade.setter
+    def grade(self, grade):
+        self.__grades = grade
+
+    def add_grade(self, subject, grade):
+        if subject not in self.grade.keys():
+            self.__grades[subject] = grade
+        else:
+            return f"{subject} already added"
+
+    def average_grade(self):
+        value_dict = self.__grades.values()
+        value_list = list(value_dict)
+        average = round(sum(value_list)/len(value_list), 1)
+        return f"Average grade: {average}"
+
+    def display_details(self):
+        return f"Student ID: {self.__student_id}, Name: {self.__name}, {self.average_grade()}"
+
+
+class SearchDictMixin:
+        def _search(self, searched_object, dict):
+            return dict[searched_object]
+
+
+class StudentManagementSystem(SearchDictMixin):
+    __stud_dict = {}
+
+    def add_student(self, student_id, name, **grades):
+        student = Student(student_id, name, **grades)
+        self.__stud_dict[student_id] = student
+
+    def show_student_details(self, searched_id):
+        try:
+            result = self._search(searched_id, self.__stud_dict)
+            return result.display_details()
+        except:
+            return f"Searched ID {searched_id} is not corresponding to any IDs in our system"
+
+    def show_student_average_grade(self, searched_id):
+        try:
+            result = self._search(searched_id, self.__stud_dict)
+            return result.average_grade()
+        except:
+            return f"Searched ID {searched_id} is not corresponding to any IDs in our system"
