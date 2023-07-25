@@ -21,7 +21,13 @@ class Student(Person):
 
     @grade.setter
     def grade(self, grade):
-        self.__grades = grade
+        for key in grade.keys():
+            if not isinstance(grade[key], int) or 100 < grade[key] or grade[key] < 0:
+                raise ValueError("grade should be a positive number between 0-100")
+            elif key in self.__grades.keys():
+                self.__grades[key] = grade[key]
+            elif key not in self.__grades.keys():
+                raise f"subject is not added yet to be updated, try adding it first"
 
     def add_grade(self, subject, grade):
         if subject not in self.grade.keys():
@@ -40,8 +46,8 @@ class Student(Person):
 
 
 class SearchDictMixin:
-        def _search(self, searched_object, dict):
-            return dict[searched_object]
+    def _search(self, searched_object, dict):
+        return dict[searched_object]
 
 
 class StudentManagementSystem(SearchDictMixin):
