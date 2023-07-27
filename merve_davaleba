@@ -16,11 +16,11 @@ class Student(Person):
         self.__grades = grades
 
     @property
-    def grade_update(self):
+    def grade(self):
         return self.__grades
 
-    @grade_update.setter
-    def grade_update(self, grade):
+    @grade.setter
+    def grade(self, grade):
         for key in grade.keys():
             if not isinstance(grade[key], int) or 100 < grade[key] or grade[key] < 0:
                 raise ValueError("grade should be a positive number between 0-100")
@@ -30,7 +30,7 @@ class Student(Person):
                 raise f"subject is not added yet to be updated, try adding it first."
 
     def add_grade(self, subject, grade):
-        if subject not in self.grade_update.keys():
+        if subject not in self.grade.keys():
             self.__grades[subject] = grade
         else:
             return f"{subject} already added, try updating it."
