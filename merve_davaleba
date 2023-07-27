@@ -9,9 +9,18 @@ class Person(ABC):
 
 class Student(Person):
     def __init__(self, student_id, name, **grades):
-        self.__student_id = student_id
-        self.__name = name
-        self.__grades = grades
+        if not isinstance(student_id, int):
+            print(f"student_id should be a number, please edit provided student ID: {student_id}")
+        else:
+            self.__student_id = student_id
+        if not isinstance(name, str):
+            print(f"name should be a string, please edit provided name: {name}")
+        else:
+            self.__name = name
+        if not isinstance(grades, dict):
+            print("grades should be a dictionary of keys=subjects and values=grades")
+        else:
+            self.__grades = grades
 
     @property
     def grade(self):
@@ -43,7 +52,7 @@ class Student(Person):
             else:
                 self.__grades[subject] = grade
         except:
-            print("try providing two attributes: a new subject and a grade, example: Student.add_grade('new subject': a number)")
+            print("try to provide two attributes: new subject and grade, example: Student.add_grade('new subject': a number)")
 
     def average_grade(self):
         value_dict = self.__grades.values()
@@ -61,9 +70,16 @@ class SearchDictMixin:
 class StudentManagementSystem(SearchDictMixin):
     __stud_dict = {}
 
+    def stud_list(self):
+        return [self.__stud_dict[key].display_details() for key in self.__stud_dict.keys()]
+
+
     def add_student(self, student_id, name, **grades):
-        student = Student(student_id, name, **grades)
-        self.__stud_dict[student_id] = student
+        if student_id not in self.__stud_dict.keys():
+            student = Student(student_id, name, **grades)
+            self.__stud_dict[student_id] = student
+        else:
+            print("Student ID already exist")
 
     def show_student_details(self, searched_id):
         try:
