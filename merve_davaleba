@@ -30,10 +30,14 @@ class Student(Person):
                 raise f"subject is not added yet to be updated, try adding it first."
 
     def add_grade(self, subject, grade):
-        if subject not in self.grade.keys():
-            self.__grades[subject] = grade
-        else:
+        if subject in self.__grades.keys():
             return f"{subject} already added, try updating it."
+        elif not isinstance(grade, int):
+            raise ValueError("grade should be a number between 0-100")
+        elif grade < 0 or grade > 100:
+            return "grade should be a number between 0-100"
+        else:
+            self.__grades[subject] = grade
 
     def average_grade(self):
         value_dict = self.__grades.values()
@@ -43,8 +47,6 @@ class Student(Person):
 
     def display_details(self):
         return f"Student ID: {self.__student_id}, Name: {self.__name}, {self.average_grade()}"
-
-
 class SearchDictMixin:
     def _search(self, searched_object, dict):
         return dict[searched_object]
