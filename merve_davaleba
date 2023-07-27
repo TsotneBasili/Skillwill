@@ -17,10 +17,10 @@ class Student(Person):
             print(f"name should be a string, please edit provided name: {name}")
         else:
             self.__name = name
-        if not isinstance(grades, dict):
-            print("grades should be a dictionary of keys=subjects and values=grades")
-        else:
-            self.__grades = grades
+        # if not isinstance(grades, dict):
+        #     print("grades should be a dictionary of keys=subjects and values=grades")
+        # else:
+        self.__grades = grades
 
     @property
     def grade(self):
@@ -55,10 +55,13 @@ class Student(Person):
             print("try to provide two attributes: new subject and grade, example: Student.add_grade('new subject': a number)")
 
     def average_grade(self):
-        value_dict = self.__grades.values()
-        value_list = list(value_dict)
-        average = round(sum(value_list)/len(value_list), 1)
-        return f"Average grade: {average}"
+        if len(self.__grades) != 0:
+            value_dict = self.__grades.values()
+            value_list = list(value_dict)
+            average = round(sum(value_list)/len(value_list), 1)
+            return f"Average grade: {average}"
+        else:
+            return "Average grade: Grades are not added yet"
 
     def display_details(self):
         return f"Student ID: {self.__student_id}, Name: {self.__name}, {self.average_grade()}"
