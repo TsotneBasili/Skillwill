@@ -86,14 +86,20 @@ class StudentManagementSystem(SearchDictMixin):
 
     def show_student_details(self, searched_id):
         try:
-            result = self._search(searched_id, self.__stud_dict)
-            return result.display_details()
+            if not isinstance(searched_id, int):
+                return f"searched_ID should be a number, please edit provided ID: {searched_id}"
+            else:
+                result = self._search(searched_id, self.__stud_dict)
+                return result.display_details()
         except:
             return f"Searched ID {searched_id} is not corresponding to any IDs in our system"
 
     def show_student_average_grade(self, searched_id):
         try:
-            result = self._search(searched_id, self.__stud_dict)
-            return result.average_grade()
+            if not isinstance(searched_id, int):
+                return f"searched_ID should be a number, please edit provided ID: {searched_id}"
+            else:
+                result = self._search(searched_id, self.__stud_dict)
+                return result.average_grade()
         except:
             return f"Searched ID {searched_id} is not corresponding to any IDs in our system"
