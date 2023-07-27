@@ -1,5 +1,3 @@
-# Creating student management system
-
 from abc import ABC, abstractmethod
 
 
@@ -21,23 +19,31 @@ class Student(Person):
 
     @grade.setter
     def grade(self, grade):
-        for key in grade.keys():
-            if not isinstance(grade[key], int) or 100 < grade[key] or grade[key] < 0:
-                raise ValueError("grade should be a positive number between 0-100")
-            elif key in self.__grades.keys():
-                self.__grades[key] = grade[key]
-            elif key not in self.__grades.keys():
-                raise f"subject is not added yet to be updated, try adding it first."
+        try:
+            for key in grade.keys():
+                if not isinstance(grade[key], int):
+                    print("grade should be a number between 0-100")  # or - raise ValueError ("grade should be a number")
+                elif 100 < grade[key] or grade[key] < 0:
+                    print("grade should be a number between 0-100")  # or - raise ValueError ("grade should be a number between 0-100"
+                elif key in self.__grades.keys():
+                    self.__grades[key] = grade[key]
+                elif key not in self.__grades.keys():
+                    print(f"{key} is not added yet, try adding it first.")
+        except:
+            print("try providing dictionary of a key=subject and a value=grade, example: Student.grade = {'existing subject': number between 0-100}")
 
     def add_grade(self, subject, grade):
-        if subject in self.__grades.keys():
-            return f"{subject} already added, try updating it."
-        elif not isinstance(grade, int):
-            raise ValueError("grade should be a number between 0-100")
-        elif grade < 0 or grade > 100:
-            return "grade should be a number between 0-100"
-        else:
-            self.__grades[subject] = grade
+        try:
+            if subject in self.__grades.keys():
+                return f"{subject} already added, try updating it."
+            elif not isinstance(grade, int):
+                raise ValueError("grade should be a number between 0-100")
+            elif grade < 0 or grade > 100:
+                return "grade should be a number between 0-100"
+            else:
+                self.__grades[subject] = grade
+        except:
+            print("try providing two attributes: a new subject and a grade, example: Student.add_grade('new subject': a number)")
 
     def average_grade(self):
         value_dict = self.__grades.values()
