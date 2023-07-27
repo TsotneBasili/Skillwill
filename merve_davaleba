@@ -13,13 +13,12 @@ class Student(Person):
             print(f"student_id should be a number, please edit provided student ID: {student_id}")
         else:
             self.__student_id = student_id
+
         if not isinstance(name, str):
             print(f"name should be a string, please edit provided name: {name}")
         else:
             self.__name = name
-        # if not isinstance(grades, dict):
-        #     print("grades should be a dictionary of keys=subjects and values=grades")
-        # else:
+
         self.__grades = grades
 
     @property
