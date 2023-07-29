@@ -1,0 +1,5 @@
+INSERT INTO Customers VALUES(6, "Tsotne", "Basilidze", 28, "GEO");
+INSERT INTO Orders VALUES(6, "PS5", 1, 6);
+UPDATE Customers SET country="GE" WHERE customer_id=1;
+DELETE FROM Customers WHERE customer_id=2;
+SELECT * FROM Customers;
