@@ -1,0 +1,63 @@
+CREATE TABLE Tv (
+	id INTEGER,
+  	brand VARCHAR,
+  	price DECIMAL,
+  	color VARCHAR,
+  	quantity INTEGER,
+  	width FLOAT,
+  	height FLOAT
+);
+
+INSERT INTO Tv 
+VALUES(1, "Samsung", 700, "blue", 21, 73, 43),
+(2, "Sony", 500, "black", 15, 70, 40),
+(3, "LG", 600, "green", 3, 70, 40),
+(4, "LG", 700, "green", 1, 74,42),
+(5, "Samsung", 900, "yellow", 14, 75,42),
+(6, "Samsung", 1000, "blue", 2, 77,43)
+
+SELECT
+	id,
+    brand,
+    price,
+    color,
+    quantity,
+    width,
+    height
+FROM Tv
+WHERE price > 600
+
+SELECT
+	id,
+    brand,
+    price,
+    color,
+    quantity,
+    width,
+    height
+FROM Tv
+WHERE quantity > 2 and color = "blue"
+
+SELECT
+	id,
+    brand,
+    price,
+    color,
+    quantity,
+    width,
+    height,
+    quantity * price as total_price
+FROM Tv
+
+SELECT
+	id,
+    brand,
+    price,
+    color,
+    quantity,
+    width,
+    height,
+    quantity * price as total_price,
+    width * height as area
+FROM Tv
+WHERE area > 3000
