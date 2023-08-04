@@ -1,23 +1,24 @@
 create table Students (id SERIAL PRIMARY KEY, name VARCHAR(20), surname VARCHAR(20), subject VARCHAR, grade INTEGER);
 
-INSERT INTO Students (name, surname, subject, grade)
-VALUES("Don", "Atelo", "History", 98),
-("Mickel", "Angelo", "History", 65),
-("napoleon", "bonapardi", "History", 99),
-("Tereza", "Mendoza", "History", 82),
-("putin", "lukashenko", "History", 84),
-("aleqsandre", "makedoneli", "History", 100),
-("iulius", "keisari", "History", 45),
-("Solo", "Mono", "History", 32),
-("tara", "mana", "History", 55),
-("melo", "elo", "History", 100),
-("meri", "merishvili", "History", 77),
-("tera", "retro", "History", 85),
-("rtutu", "morbi", "History", 44),
-("kaki", "mertvi", "History", 67);
+INSERT INTO Students (id, name, surname, subject, grade)
+VALUES(1, "Don", "Atelo", "History", 98),
+(2, "Mickel", "Angelo", "History", 65),
+(3, "napoleon", "bonapardi", "History", 99),
+(4, "Tereza", "Mendoza", "History", 82),
+(5, "putin", "lukashenko", "History", 84),
+(6, "aleqsandre", "makedoneli", "History", 100),
+(7, "iulius", "keisari", "History", 45),
+(8, "Solo", "Mono", "History", 32),
+(9, "tara", "mana", "History", 55),
+(10, "melo", "elo", "History", 100),
+(11, "meri", "merishvili", "History", 77),
+(12, "tera", "retro", "History", 85),
+(13, "rtutu", "morbi", "History", 44),
+(14, "kaki", "mertvi", "History", 67);
 
 
 SELECT
+        id,
         name,
         surname,
         subject,
@@ -27,6 +28,7 @@ WHERE grade>65;
 
 
 explain analyze SELECT
+        id,
         name,
         surname,
         subject,
@@ -35,10 +37,11 @@ FROM Students
 WHERE grade>65;
 
 
-create index grade_index on Student(grade);
+create index grade_index on Students(grade);
 
 
 SELECT
+        id,
         name,
         surname,
         subject,
@@ -48,6 +51,7 @@ WHERE grade>65;
 
 
 explain analyze SELECT
+        id,
         name,
         surname,
         subject,
