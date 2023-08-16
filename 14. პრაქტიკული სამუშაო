@@ -1,0 +1,296 @@
+CREATE TABLE Author (
+  id INTEGER,
+  name varchar(100) NOT NULL,
+  surname varchar(100) NOT NULL
+);
+
+
+CREATE TABLE Address(
+  id INTEGER,
+  address VARCHAR(255),
+  city VARCHAR(255),
+  zip VARCHAR(255)
+);
+
+
+CREATE TABLE Category (
+  id INTEGER,
+  name VARCHAR(255)
+);
+
+
+CREATE TABLE City (
+  id INTEGER,
+  city VARCHAR(255),
+  country_id INTEGER
+);
+
+
+CREATE TABLE country(
+  id INTEGER,
+  country VARCHAR(60)
+);
+
+
+CREATE TABLE customer (
+  id INTEGER,
+  library INTEGER,
+  name varchar(100) NOT NULL,
+  surname varchar(100) NOT NULL,
+  email VARCHAR(50),
+  address_id INTEGER,
+  create_date DATE,
+  active INTEGER
+);
+
+
+CREATE TABLE Book (
+  id INTEGER,
+  title VARCHAR(250),
+  description TEXT,
+  release_year INTEGER,
+  languadge_id INTEGER,
+  rental_duration INTEGER,
+  rental_rate NUMERIC(4,2)
+);
+
+
+CREATE TABLE Book_author(
+  id INTEGER,
+  author_id INTEGER,
+  book_id INTEGER
+);
+
+
+CREATE TABLE Book_category(
+  id INTEGER,
+  category_id INTEGER,
+  book_id INTEGER
+);
+
+
+CREATE TABLE inventory(
+  id INTEGER,
+  library_id INTEGER,
+  book_id INTEGER
+);
+
+
+CREATE TABLE languadge(
+  id INTEGER,
+  name varchar(60)
+);
+
+
+CREATE TABLE Payment(
+  id INTEGER,
+  customer_id INTEGER,
+  staff_id INTEGER,
+  rental_id INTEGER,
+  amount NUMERIC(5, 2),
+  payment_date TIMESTAMP
+);
+
+
+CREATE TABLE Rental(
+  id INTEGER,
+  rental_date TIMESTAMP,
+  inventory_id INTEGER,
+  customer_id INTEGER,
+  return_date TIMESTAMP,
+  staff_id INTEGER
+);
+
+
+CREATE TABLE Staff(
+  id INTEGER,
+  name varchar(100) NOT NULL,
+  surname varchar(100) NOT NULL,
+  email VARCHAR(50),
+  address_id INTEGER,
+  library_id INTEGER
+);
+
+
+CREATE TABLE Library(
+  id INTEGER,
+  manager_staff_id INTEGER,
+  address_id INTEGER
+);
+
+
+
+insert into author values
+(1, "Don", "Atelo"),
+(2, "Mickel", "Angelo"),
+(3, "napoleon", "bonapardi" ),
+(4, "Tereza", "Mendoza" ),
+(5, "putin", "lukashenko" ),
+(6, "aleqsandre", "makedoneli" ),
+(7, "iulius", "keisari" ),
+(8, "Solo", "Mono" ),
+(9, "tara", "mana" ),
+(10, "melo", "elo" );
+
+
+
+insert into languadge values
+(1, "English"),
+(2, "German"),
+(3, "Georgian"),
+(4, "Spanish" );
+
+
+insert into category values
+(1, "Crime"),
+(2, "Fantasy"),
+(3, "Horror"),
+(4, "Romance" );
+
+
+insert into country values
+(1, "Germany"),
+(2, "England"),
+(3, "Georgia"),
+(4, "Spain" );
+
+
+insert into address values
+(1, "Germany, hardin str 53", "Berlin", 322),
+(2, "England, markshi street 21", "London", 3421),
+(3, "Georgia, gamsaxurdia 12", "Hamburg", 32281),
+(4, "Spain, lorshkis str 35", "Hamburg", 3221 ),
+(5, "Germany, marbel str 23", "Hamburg", 32251),
+(6, "Spain, loren str 54", "Berlin", 3252),
+(7, "England, vowmer str 533", "Berlin", 323132),
+(8, "Germany, lofgard str 562", "Berlin", 32642);
+
+
+
+insert into book values
+(1, "Dorothy Must Die", "description", 2014, 4, 13, 3),
+(2, "To Kill a Mockingbird", "description", 1960, 2, 10, 2),
+(3, "Pale Fire", "description", 1962, 4, 2, 7),
+(4, "The Fault in Our Stars", "description", 2012, 1, 3, 6),
+(5, "As I Lay Dying", "description", 1930, 3, 5, 3),
+(6, "The Grapes of Wrath", "description", 1939, 1, 7, 6),
+(7, "The Sun Also Rises", "description", 1929, 4, 12, 14),
+(8, "In Search of Lost Time", "description", 1933, 2, 29, 2);
+
+
+
+INSERT INTO Book_author
+VALUES(1, 2, 5),
+(2, 4, 3),
+(3, 2, 2),
+(4, 3, 6),
+(5, 8, 1),
+(6, 6, 8),
+(7, 7, 4),
+(8, 5, 7);
+
+
+INSERT INTO Book_category
+VALUES(1, 2, 5),
+(2, 4, 3),
+(3, 3, 2),
+(4, 3, 6),
+(5, 4, 1),
+(6, 2, 8),
+(7, 1, 4),
+(8, 2, 7);
+
+
+INSERT INTO city
+VALUES(1, "London", 2),
+(2, "Berlin", 1),
+(3, "Hamburg", 1),
+(4, "Tbilisi", 3),
+(5, "Madrid", 4),
+(6, "Barcelona", 4),
+(7, "Rustavi", 3),
+(8, "Liverpool", 2);
+
+
+
+INSERT INTO Library
+VALUES(1, 1, 5),
+(2, 2, 3),
+(3, 3, 2),
+(4, 4, 6);
+
+
+
+INSERT INTO inventory
+VALUES(1, 2, 5),
+(2, 4, 3),
+(3, 3, 2),
+(4, 3, 6),
+(5, 4, 1),
+(6, 2, 8),
+(7, 1, 4),
+(8, 2, 7);
+
+
+
+NSERT INTO Staff
+VALUES(1, "meh", "muh", "gmail.com", 2, 4),
+(2, "rar", "rur", "gmail.com", 5, 4),
+(3, "rer", "mer", "gmail.com", 8, 2),
+(4, "dim", "dum", "gmail.com", 3, 3),
+(5, "pat", "rut", "gmail.com", 1, 1),
+(6, "tem", "per", "gmail.com", 4, 3),
+(7, "sol", "mon", "gmail.com", 6, 2),
+(8, "tip", "par", "gmail.com", 7, 1);
+
+
+
+INSERT INTO Customer
+VALUES(1, 1, "re", "Atelo", "yahoo.com", 1, "2023-04-21", 0),
+(2, 3, "dfs", "Atelo", "yahoo.com", 2, '2023-04-12', 0),
+(3, 4, "asd", "Atelo", "yahoo.com", 3, '2023-04-23', 1),
+(4, 2, "sed", "Atelo", "yahoo.com", 4, '2023-04-21', 1),
+(5, 1, "srt", "Atelo", "yahoo.com", 5, '2023-04-15', 1),
+(6, 1, "gty", "Atelo", "yahoo.com", 6, '2023-04-21', 1),
+(7, 3, "her", "Atelo", "yahoo.com", 7, '2023-04-30', 0),
+(8, 4, "ner", "Atelo", "yahoo.com", 3, '2023-04-04', 1),
+(9, 4, "fer", "Atelo", "yahoo.com", 5, '2023-04-07', 0),
+(10, 2, "Dgeron", "Atelo", "yahoo.com", 8, '2023-04-21', 0),
+(11, 2, "hffger", "Atelo", "yahoo.com", 5, '2023-04-07', 1),
+(12, 1, "wer", "Atelo", "yahoo.com", 3, '2023-04-11', 1),
+(13, 3, "zer", "Atelo", "yahoo.com", 2, '2023-04-12', 0);
+
+
+
+INSERT INTO Rental
+VALUES(1, "2023-04-21", 1, 2, "2023-04-29", 1),
+(2, '2023-04-12', 3, 4, "2023-04-13", 2),
+(3, '2023-04-23', 2, 3, "2023-04-27", 6),
+(4, '2023-04-21', 4, 5, "2023-04-22", 2),
+(5, '2023-04-15', 5, 8, "2023-04-21", 3),
+(6, '2023-04-21', 7, 13, "2023-04-30", 5),
+(7, '2023-04-30', 3, 7, "2023-05-21", 8),
+(8, '2023-04-04', 8, 9, "2023-04-09", 7),
+(9, '2023-04-07', 2, 12, "2023-04-23", 7),
+(10, '2023-04-21', 1, 11, "2023-04-25", 1),
+(11, '2023-04-07', 5, 10, "2023-04-10", 5),
+(12, '2023-04-11', 4, 1, "2023-04-15", 4),
+(13, '2023-04-12', 8, 6, "2023-04-16", 4);
+
+
+
+INSERT INTO Payment
+VALUES(1, 3, 1, 1, 10,  "2023-04-29"),
+(2, 4, 3, 2, 15, "2023-04-13"),
+(3, 5, 2, 3, 11, "2023-04-27"),
+(4, 2, 4, 4, 20, "2023-04-22"),
+(5, 1, 5, 5, 24, "2023-04-21"),
+(6, 13, 7, 6, 5, "2023-04-30"),
+(7, 12, 3, 7, 8, "2023-05-21"),
+(8, 9, 8, 8, 12, "2023-04-09"),
+(9, 10, 2, 9, 15, "2023-04-23"),
+(10, 11, 1, 10, 22, "2023-04-25"),
+(11, 6, 5, 11,35,  "2023-04-10"),
+(12, 7, 4, 12, 11, "2023-04-15"),
+(13, 8, 8, 13, 18, "2023-04-16");
+
