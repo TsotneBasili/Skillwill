@@ -233,7 +233,7 @@ VALUES(1, 2, 5),
 
 
 
-NSERT INTO Staff
+INSERT INTO Staff
 VALUES(1, "meh", "muh", "gmail.com", 2, 4),
 (2, "rar", "rur", "gmail.com", 5, 4),
 (3, "rer", "mer", "gmail.com", 8, 2),
@@ -304,7 +304,7 @@ SELECT * From book WHERE languadge_id BETWEEN 2 and 3;
 SELECT * From book WHERE release_year in(1929, 2012);
 
 INSERT INTO book
-VALUES(9, "The Waste Land", "Description", 1922, 4, 12, 5)
+VALUES(9, "The Waste Land", "Description", 1922, 4, 12, 5);
 
 SELECT * FROM book WHERE id=9;
 
@@ -313,11 +313,11 @@ INSERT INTO author
 VALUES(11, "ras", "putin");
 
 INSERT INTO book_author
-VALUES(9, 11, 9)
+VALUES(9, 11, 9);
 
 
 INSERT INTO book_category
-VALUES(9, 3, 9)
+VALUES(9, 3, 9);
 
 SELECT * FROM Book_author where author_id=11;
 
@@ -342,7 +342,7 @@ SELECT
 FROM Book_author
 LEFT JOIN Book ON book_id=book.id
 LEFT JOIN author on author_id=author.id
-WHERE book.id=9
+WHERE book.id=9;
 
 
 INSERT INTO book_category
