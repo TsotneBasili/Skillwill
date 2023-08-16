@@ -294,3 +294,114 @@ VALUES(1, 3, 1, 1, 10,  "2023-04-29"),
 (12, 7, 4, 12, 11, "2023-04-15"),
 (13, 8, 8, 13, 18, "2023-04-16");
 
+
+
+
+SELECT * From book WHERE languadge_id=4;
+SELECT * From book WHERE languadge_id>2;
+SELECT * From book WHERE languadge_id>2 and release_year > 1939;
+SELECT * From book WHERE languadge_id BETWEEN 2 and 3;
+SELECT * From book WHERE release_year in(1929, 2012);
+
+INSERT INTO book
+VALUES(9, "The Waste Land", "Description", 1922, 4, 12, 5)
+
+SELECT * FROM book WHERE id=9;
+
+
+INSERT INTO author
+VALUES(11, "ras", "putin");
+
+INSERT INTO book_author
+VALUES(9, 11, 9)
+
+
+INSERT INTO book_category
+VALUES(9, 3, 9)
+
+SELECT * FROM Book_author where author_id=11;
+
+
+SELECT
+	book_author.id as id,
+    title,
+    release_year,
+    name,
+    surname
+FROM Book_author
+LEFT JOIN Book ON book_id=book.id
+LEFT JOIN author on author_id=author.id;
+
+
+SELECT
+	book_author.id as id,
+    title,
+    release_year,
+    name,
+    surname
+FROM Book_author
+LEFT JOIN Book ON book_id=book.id
+LEFT JOIN author on author_id=author.id
+WHERE book.id=9
+
+
+INSERT INTO book_category
+Values(10, 4, 9);
+
+
+SELECT title, release_year, name
+FROM Book_category
+LEFT JOIN Book on Book_category.book_id = book.id
+LEFT JOIN category on Book_category.category_id = category.id;
+
+
+SELECT title, release_year, name
+FROM Book_category
+LEFT JOIN Book on Book_category.book_id = book.id
+LEFT JOIN category on Book_category.category_id = category.id
+where book.id = 9;
+
+
+
+INSERT INTO Inventory
+Values(9, 4, 9),
+      (10, 2, 9);
+
+
+INSERT INTO rental
+Values(14, "2023-08-16", 9, 10, "2023-08-25", 2);
+
+
+INSERT INTO payment
+Values(14, 10, 2, 14, 15,  "2023-08-16");
+
+
+SELECT
+	staff.name as staff_name,
+    customer.name as customer_name,
+    customer.surname as customer_surname,
+    payment_date,
+    amount,
+    return_date
+FROM payment
+LEFT JOIN customer on payment.customer_id = customer.id
+LEFT JOIN staff on payment.staff_id = staff.id
+LEFT JOIN rental on payment.rental_id = rental.id
+where payment.id=14;
+
+
+SELECT
+    sum(amount)
+FROM payment
+LEFT JOIN customer on payment.customer_id = customer.id
+LEFT JOIN staff on payment.staff_id = staff.id
+LEFT JOIN rental on payment.rental_id = rental.id;
+
+
+UPDATE Library SET address_id=4 where id=2;
+
+DELETE FROM payment where id=2;
+
+DROP TABLE City;
+
+
